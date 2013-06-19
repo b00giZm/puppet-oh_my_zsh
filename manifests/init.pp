@@ -1,4 +1,10 @@
-# This is a placeholder class.
-class template {
-  anchor { 'Hello_World': }
+# Public: Installs oh-my-zsh via the automatic installer script.
+#
+# Examples
+#
+#   include oh-my-zsh
+class oh_my_zsh {
+  exec { 'curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh':
+    path => '/usr/bin',
+  }
 }
