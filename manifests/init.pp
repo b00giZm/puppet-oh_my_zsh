@@ -15,7 +15,7 @@ class oh_my_zsh {
     provider => 'git',
   }
   
-  exec { 'backup_zshrc':
+  exec { 'backup_zshrc_oh_my_zsh':
     command   => "cat ${user_home}/.zshrc > ${user_home}/.zshrc.pre-oh-my-zsh",
     onlyif    => "test -f ${user_home}/.zshrc",
     subscribe => Repository[$dest_dir],
@@ -23,7 +23,7 @@ class oh_my_zsh {
   
   exec { 'copy_zshrc_config_template':
     command   => "cp ${dest_dir}/templates/zshrc.zsh-template ${user_home}/.zshrc",
-    subscribe => Exec['backup_zshrc']
+    subscribe => Exec['backup_zshrc_oh_my_zsh']
   }
 
 }
